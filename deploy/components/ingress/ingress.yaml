@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  creationTimestamp: null
+  name: test-ingress3-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test-ingress3.cluster.koalaops.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: test-ingress3-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - test-ingress3.cluster.koalaops.com
+    secretName: test-ingress3-tls-cert
+status:
+  loadBalancer: {}

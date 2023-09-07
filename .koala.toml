@@ -1,0 +1,61 @@
+ServiceName = "test-ingress3"
+Name = "test-ingress3"
+Description = "Hello Koala!"
+Owners = ["nadaverell@gmail.com"]
+ServerFramework = "go-server"
+ServerMain = ""
+ArtifactRepository = "me-west1-docker.pkg.dev/koala-ops-demo-373407/koala-repo"
+Domain = "cluster.koalaops.com"
+Port = 8080
+
+[Repo]
+  Name = "test-ingress3"
+  GitUser = "koala-sandbox"
+  URL = "https://github.com/koala-sandbox/test-ingress3"
+  Token = ""
+
+[OpenAPIConfig]
+  SpecPath = ""
+  CodegenTool = ""
+
+[[Environments]]
+  Name = "dev"
+  Namespace = "dev"
+  Cluster = "koala-demo-cluster"
+  IngressEnabled = true
+  IngressHost = ""
+  [Environments.EnvDeploymentConfig]
+    AutoDeploy = true
+
+[[Environments]]
+  Name = "prod"
+  Namespace = "prod"
+  Cluster = "koala-demo-cluster"
+  IngressEnabled = true
+  IngressHost = ""
+  [Environments.EnvDeploymentConfig]
+    AutoDeploy = false
+
+[SSLConfig]
+  CertName = "test-ingress3-tls-cert"
+  Issuer = "letsencrypt"
+  IssuerContactEmail = "nadaverell@gmail.com"
+
+[Metrics]
+  Collector = ""
+  [Metrics.Endpoint]
+    Path = ""
+    Port = 0
+    Scheme = ""
+    Interval = ""
+
+[Tracing]
+  Backend = ""
+  URL = ""
+
+[Profiling]
+  Tool = ""
+
+[SecretStore]
+  SecretStore = ""
+  Tool = ""
